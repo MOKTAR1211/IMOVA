@@ -246,13 +246,19 @@ app.use("/api/admin", adminRoutes);
 
 app.get("/", (req, res) => {
   res.json({
-    message: "Bienvenue sur l'API Immo229",
+    message: "Bienvenue sur l'API IMOVA",
     status: "online",
-    frontend: "http://localhost:5174",
+    version: "1.0.0",
+    frontend: process.env.FRONTEND_URL || "http://localhost:5173",
     endpoints: {
       health: "/api/health",
       auth: "/api/auth",
-      properties: "/api/properties"
+      properties: "/api/properties",
+      messages: "/api/messages",
+      visits: "/api/visits",
+      notifications: "/api/notifications",
+      favorites: "/api/favorites",
+      admin: "/api/admin"
     }
   });
 });
