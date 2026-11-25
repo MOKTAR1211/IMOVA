@@ -23,7 +23,10 @@ const passwordResetMessage =
   "Si un compte correspond à cette adresse, un e-mail de réinitialisation va être envoyé.";
 const verificationMessage =
   "Un code de confirmation a été envoyé à votre adresse e-mail.";
-const testEmailVerification = process.env.IMOVA_TEST_DB === "memory";
+const testEmailVerification =
+  process.env.IMOVA_TEST_DB === "memory" ||
+  process.env.NODE_ENV !== "production" ||
+  !isSmtpConfigured;
 
 function hashVerificationCode(code) {
   return crypto.createHmac("sha256", jwtSecret).update(code).digest("hex");

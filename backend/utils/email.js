@@ -49,7 +49,8 @@ async function sendSearchAlertEmail(email, property) {
 }
 
 async function sendVerificationCodeEmail(email, code) {
-  if (process.env.IMOVA_TEST_DB === "memory") {
+  if (process.env.IMOVA_TEST_DB === "memory" || !isSmtpConfigured) {
+    console.log(`📧 [IMOVA DEV] Code de confirmation pour ${email} : ${code}`);
     testVerificationCodes.set(email, code);
     return;
   }

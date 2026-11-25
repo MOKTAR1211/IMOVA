@@ -123,6 +123,9 @@ function Register() {
       setVerificationEmail(form.email.trim().toLowerCase());
       setVerificationMode(true);
       setCodeEmailSent(true);
+      if (data.testVerificationCode) {
+        setVerificationCode(data.testVerificationCode);
+      }
       setMessage({
         text: "Compte créé. Saisissez le code à 6 chiffres envoyé par e-mail pour activer votre compte.",
         type: "success",
