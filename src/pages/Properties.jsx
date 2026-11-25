@@ -394,7 +394,7 @@ function Properties() {
 
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold transition shadow-sm shadow-emerald-600/30"
+              className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition shadow-sm shadow-blue-600/30"
             >
               <Search className="w-4 h-4" />
               Appliquer les filtres

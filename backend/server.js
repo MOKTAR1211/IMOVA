@@ -236,6 +236,19 @@ app.use("/api/favorites", require("./routes/favorites"));
 app.use("/api/dashboard", require("./routes/dashboard"));
 app.use("/api/admin", adminRoutes);
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Bienvenue sur l'API Immo229",
+    status: "online",
+    frontend: "http://localhost:5174",
+    endpoints: {
+      health: "/api/health",
+      auth: "/api/auth",
+      properties: "/api/properties"
+    }
+  });
+});
+
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", service: "immo229-backend", timestamp: new Date() });
 });
