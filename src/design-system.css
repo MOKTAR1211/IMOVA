@@ -1,0 +1,156 @@
+:root {
+  color-scheme: light;
+  --imova-ink: #07152f;
+  --imova-blue: #2563eb;
+  --imova-blue-dark: #1d4ed8;
+  --imova-teal: #0f766e;
+  --imova-teal-bright: #14b8a6;
+  --imova-gold: #f59e0b;
+  --imova-muted: #64748b;
+  --imova-border: #e2e8f0;
+  --imova-surface: #ffffff;
+  --imova-page: #f6f8fb;
+  --imova-radius: 16px;
+  --imova-shadow: 0 12px 32px rgba(7, 21, 47, 0.07);
+  --imova-shadow-hover: 0 18px 42px rgba(7, 21, 47, 0.12);
+}
+
+html {
+  scroll-padding-top: 96px;
+}
+
+body {
+  background: var(--imova-page);
+  color: #17243b;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.55;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea) {
+  border-color: var(--imova-border);
+  border-radius: 11px;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea):focus-visible {
+  border-color: #5b8df3;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid rgba(20, 184, 166, 0.55);
+  outline-offset: 3px;
+}
+
+h1,
+.home-hero h1 {
+  letter-spacing: -0.035em;
+}
+
+.imova-navbar {
+  border-color: rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 5px 22px rgba(7, 21, 47, 0.06);
+}
+
+.immo-navbar__link {
+  min-height: 44px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.immo-navbar__link:hover {
+  background: #eff6ff;
+  color: var(--imova-blue);
+}
+
+.immo-navbar__link.is-active {
+  color: var(--imova-blue);
+}
+
+.immo-navbar__link.is-active::after {
+  background: var(--imova-gold);
+}
+
+.immo-navbar__publish {
+  background: var(--imova-blue);
+  border-color: var(--imova-blue);
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.18);
+}
+
+.immo-navbar__publish:hover {
+  background: var(--imova-blue-dark);
+  border-color: var(--imova-blue-dark);
+}
+
+.imova-footer {
+  background:
+    radial-gradient(ellipse at 10% 0, rgba(37, 99, 235, 0.16), transparent 34%),
+    var(--imova-ink);
+}
+
+.imova-footer__brand > span,
+.imova-footer__column a,
+.imova-footer__column li,
+.imova-footer__column > span {
+  font-size: 13px;
+}
+
+.imova-footer__column h2 {
+  font-size: 12px;
+}
+
+.imova-footer__bottom {
+  font-size: 12px;
+}
+
+.imova-footer__column li svg,
+.imova-footer__contact svg {
+  color: var(--imova-teal-bright);
+}
+
+.imova-property-card {
+  border-color: #e4e9f1;
+  border-radius: var(--imova-radius);
+  box-shadow: 0 5px 18px rgba(7, 21, 47, 0.055);
+}
+
+.imova-property-card:hover {
+  border-color: #bfd0fb;
+  box-shadow: var(--imova-shadow-hover);
+}
+
+.imova-property-card > a:first-child img {
+  transition: transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+::selection {
+  background: rgba(20, 184, 166, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

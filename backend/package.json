@@ -1,0 +1,31 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test:mtn": "node test_mtn_momo.js",
+    "test:messaging": "node test_messaging_features.js",
+    "test": "node test_mtn_momo.js && node test_search_alerts.js && node test_security.js && node test_stabilization.js && npm run test:properties && npm run test:admin && npm run test:messaging",
+    "test:admin": "node test_admin_modules.js",
+    "test:properties": "node test_property_transactions.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.11.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.4.0",
+    "nodemailer": "^10.2.1",
+    "pg": "^8.23.0",
+    "pg-mem": "^3.0.14",
+    "socket.io": "^4.8.4"
+  }
+}

@@ -1,0 +1,125 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  nom         String
+  email       String   @unique
+  motDePasse  String
+  telephone   String?
+  role        String   @default("particulier") // particulier, proprietaire, admin
+  createdAt   DateTime @default(now())
+
+  biens            Bien[]
+  favorites        Favorite[]
+  sentMessages     Message[]      @relation("SentMessages")
+  receivedMessages Message[]      @relation("ReceivedMessages")
+  reports          Report[]
+  visits           Visit[]
+  notifications    Notification[]
+}
+
+model Bien {
+  id             Int      @id @default(autoincrement())
+  titre          String
+  description    String
+  prix           Float
+  ville          String
+  quartier       String?
+  type           String   // Appartement, Maison, Terrain, Boutique
+  statut         String   @default("À louer") // À louer, À vendre
+  status         String   @default("pending") // pending, approved, rejected
+  disponibiliteStatus String @default("disponible") // disponible, loue, vendu
+  rejectionReason String?
+  chambres       Int      @default(0)
+  douches        Int      @default(0)
+  surface        Float?
+  latitude       Float?
+  longitude      Float?
+  createdAt      DateTime @default(now())
+
+  proprietaireId Int?
+  proprietaire   User?    @relation(fields: [proprietaireId], references: [id])
+
+  images         Image[]
+  favorites      Favorite[]
+  messages       Message[]
+  reports        Report[]
+  visits         Visit[]
+}
+
+model Image {
+  id           Int      @id @default(autoincrement())
+  url          String
+  isPrincipale Boolean  @default(false)
+
+  bienId       Int
+  bien         Bien     @relation(fields: [bienId], references: [id], onDelete: Cascade)
+}
+
+model Favorite {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bienId    Int
+  bien      Bien     @relation(fields: [bienId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, bienId])
+}
+
+model Message {
+  id          Int      @id @default(autoincrement())
+  senderId    Int
+  sender      User     @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  receiverId  Int
+  receiver    User     @relation("ReceivedMessages", fields: [receiverId], references: [id], onDelete: Cascade)
+  propertyId  Int?
+  property    Bien?    @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  content     String
+  isRead      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Report {
+  id          Int      @id @default(autoincrement())
+  bienId      Int
+  bien        Bien     @relation(fields: [bienId], references: [id], onDelete: Cascade)
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reason      String
+  description String?
+  status      String   @default("pending") // pending, resolved
+  createdAt   DateTime @default(now())
+}
+
+model Visit {
+  id          Int      @id @default(autoincrement())
+  bienId      Int
+  bien        Bien     @relation(fields: [bienId], references: [id], onDelete: Cascade)
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  visitDate   String
+  visitTime   String
+  message     String?
+  status      String   @default("pending") // pending, accepted, rejected, cancelled, completed
+  createdAt   DateTime @default(now())
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String   @default("general") // visit, property, message, general
+  relatedId Int?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

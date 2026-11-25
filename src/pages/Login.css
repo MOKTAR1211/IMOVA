@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Immo229 — Styles dédiés pour la page de connexion
+   Palette : Bleu nuit (#070D1E / #0B1528), Blanc (#FFFFFF), Or discret (#C5A059 / #D4AF37)
+   ========================================================================== */
+
+/* Couleur texte or discret */
+.immo-gold-text {
+  color: #C5A059;
+}
+
+/* Dégradé or discret pour accents et badges */
+.immo-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #C5A059 50%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Bordure avec dorure subtile */
+.immo-gold-border {
+  border-color: rgba(197, 160, 89, 0.35);
+}
+
+.immo-gold-border:hover {
+  border-color: rgba(212, 175, 55, 0.7);
+}
+
+/* Bouton principal Bleu Nuit & Or */
+.immo-btn-primary {
+  background-color: #0B1528;
+  color: #FFFFFF;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.immo-btn-primary:hover:not(:disabled) {
+  background-color: #14223E;
+  border-color: rgba(212, 175, 55, 0.7);
+  box-shadow: 0 10px 25px -5px rgba(11, 21, 40, 0.25), 0 0 15px rgba(197, 160, 89, 0.15);
+  transform: translateY(-1px);
+}
+
+.immo-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Animation douce d'apparition */
+@keyframes immoFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: immoFadeInUp 0.35s ease-out forwards;
+}
+
+/* Flou d'arrière-plan du modal */
+.immo-modal-backdrop {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}

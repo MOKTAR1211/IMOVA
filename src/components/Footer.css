@@ -1,0 +1,162 @@
+.imova-footer {
+  padding: 62px max(24px, calc((100vw - 1280px) / 2)) 20px;
+  background:
+    radial-gradient(ellipse at 10% 0, rgba(37, 99, 235, .15), transparent 34%),
+    #07152f;
+  color: #aab5c8;
+}
+
+.imova-footer__main {
+  display: grid;
+  grid-template-columns: minmax(210px, 1.4fr) repeat(3, minmax(120px, .8fr)) minmax(205px, 1fr);
+  gap: clamp(24px, 4vw, 55px);
+  padding-bottom: 48px;
+}
+
+.imova-footer__brand a {
+  display: inline-flex;
+}
+
+.imova-footer__logo {
+  display: block;
+  width: min(205px, 100%);
+  height: auto;
+}
+
+.imova-footer__brand p {
+  margin: 15px 0 5px;
+  color: #fff;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 19px;
+}
+
+.imova-footer__brand > span {
+  display: block;
+  max-width: 260px;
+  color: #8492a9;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.imova-footer__column h2 {
+  margin: 3px 0 17px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.imova-footer__column ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.imova-footer__column a,
+.imova-footer__column li,
+.imova-footer__column > span {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #9eabc0;
+  font-size: 11px;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.imova-footer__column a:hover {
+  color: #fff;
+}
+
+.imova-footer__column li svg,
+.imova-footer__contact svg {
+  flex: 0 0 auto;
+  color: #62a0ff;
+}
+
+.imova-footer__contact {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 13px;
+}
+
+.imova-footer__contact h2 {
+  margin-bottom: 4px;
+}
+
+.imova-footer__contact a,
+.imova-footer__contact > span {
+  overflow-wrap: anywhere;
+}
+
+.imova-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  color: #77869f;
+  font-size: 10px;
+}
+
+.imova-footer__bottom > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.imova-footer__bottom a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.imova-footer__bottom a:hover {
+  color: #fff;
+}
+
+@media (max-width: 1050px) {
+  .imova-footer__main {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .imova-footer__brand {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .imova-footer {
+    padding: 48px 22px 18px;
+  }
+
+  .imova-footer__main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 20px;
+    padding-bottom: 34px;
+  }
+
+  .imova-footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .imova-footer__contact {
+    grid-column: 1 / -1;
+  }
+
+  .imova-footer__bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .imova-footer__bottom > div {
+    gap: 16px;
+  }
+}

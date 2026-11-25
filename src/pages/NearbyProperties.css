@@ -1,0 +1,141 @@
+.nearby-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  color: #1f2937;
+}
+
+.nearby-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.nearby-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.nearby-form input,
+.nearby-form select {
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.nearby-page button {
+  padding: 11px 16px;
+  margin: 4px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.nearby-locate-btn {
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db !important;
+  color: #374151;
+}
+
+.nearby-locate-btn:hover {
+  background-color: #e5e7eb;
+}
+
+.nearby-search-btn {
+  background-color: #2563eb;
+  color: white;
+  align-self: flex-end;
+  height: 44px;
+}
+
+.nearby-search-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.nearby-page button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.nearby-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.nearby-card {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.nearby-card img {
+  width: 140px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.nearby-card h3 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.nearby-card p {
+  margin: 4px 0;
+}
+
+.nearby-distance {
+  color: #059669;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.nearby-card a,
+.nearby-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #075cc9;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.nearby-error {
+  color: #b42318;
+  background-color: #fef3f2;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 12px 0;
+}
+
+.nearby-empty {
+  color: #6b7280;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+@media (max-width: 650px) {
+  .nearby-form,
+  .nearby-results {
+    grid-template-columns: 1fr;
+  }
+
+  .nearby-card img {
+    width: 110px;
+    height: 110px;
+  }
+}

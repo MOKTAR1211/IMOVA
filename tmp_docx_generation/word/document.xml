@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><w:body>
+<w:p><w:r><w:t>Documentation technique IMMO229</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>Projet: application immobilière</w:t></w:r></w:p>
+<w:p><w:r><w:t>Date: 09/11/2026</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>1. Vue d’ensemble</w:t></w:r></w:p>
+<w:p><w:r><w:t>IMMO229 est une application web immobilière avec publication d’annonces, recherche de biens, paiements, messagerie et administration. Le projet est structuré en frontend React et backend Express avec base PostgreSQL.</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>2. Architecture technique</w:t></w:r></w:p>
+<w:p><w:r><w:t>Frontend: React 19, Vite, React Router, Tailwind CSS, Leaflet, Recharts, Socket.IO client.</w:t></w:r></w:p>
+<w:p><w:r><w:t>Backend: Node.js, Express 5, JWT, PostgreSQL, Socket.IO, nodemailer, bcrypt, pg-mem (fallback sur dev), Cloudinary.</w:t></w:r></w:p>
+<w:p><w:r><w:t>Point d’entrée backend: backend/server.js.</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>3. Structure du dépôt</w:t></w:r></w:p>
+<w:p><w:r><w:t>- src/: frontend</w:t></w:r></w:p>
+<w:p><w:r><w:t>- backend/: API</w:t></w:r></w:p>
+<w:p><w:r><w:t>- deploy/: scripts de déploiement</w:t></w:r></w:p>
+<w:p><w:r><w:t>- nginx/: configuration Nginx</w:t></w:r></w:p>
+<w:p><w:r><w:t>- docker-compose.yml: environnement local</w:t></w:r></w:p>
+<w:p><w:r><w:t>- README.md: documentation principale</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>4. Fonctionnalités principales</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Authentification et gestion des rôles</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Publication d’annonces immobilières</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Recherche avancée et cartographie</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Favoris, visites et notifications</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Paiements MTN MoMo pour publication et messagerie</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Messagerie temps réel avec pièces jointes</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Administration et modération</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>5. Sécurité</w:t></w:r></w:p>
+<w:p><w:r><w:t>Le backend applique des headers de sécurité, contrôle CORS, protège les routes via JWT, vérifie les comptes suspendus et applique le rate limiting sur /api. Les images de conversation sont stockées hors du dossier public et les accès sont vérifiés côté serveur.</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>6. Authentification</w:t></w:r></w:p>
+<w:p><w:r><w:t>Le middleware auth.js vérifie le JWT dans Authorization: Bearer &lt;token&gt;. En cas de token absent, invalide ou expiré, la réponse est 401. Si le compte est suspendu, la réponse est 403. L’admin a un middleware dédié.</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>7. Base de données</w:t></w:r></w:p>
+<w:p><w:r><w:t>Le schéma est dans backend/schema.sql. Les objets principaux sont users, properties, property_images, property_payments, messaging_payments, notifications, search_alerts, conversations, messages et reports. En production: PostgreSQL. En développement: fallback pg-mem possible.</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>8. Paiements MTN MoMo</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Publication d’annonce: 1000 FCFA</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Accès à la messagerie: 500 FCFA par annonce</w:t></w:r></w:p>
+<w:p><w:r><w:t>La validation est faite côté serveur. Les identifiants MTN restent en environnement sécurisé du serveur. Le système ne stocke pas le PIN Mobile Money et conserve uniquement les informations transactionnelles essentielles.</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>9. Messagerie temps réel</w:t></w:r></w:p>
+<w:p><w:r><w:t>La messagerie repose sur Socket.IO. Authenticate via JWT et accès uniquement aux conversations autorisées. Une salle de messagerie est accessible si le client a payé l’accès. Le backend gère les utilisateurs connectés, les indicateurs de frappe et la diffusion des messages.</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>10. Déploiement</w:t></w:r></w:p>
+<w:p><w:r><w:t>Le projet est prévu pour le développement local, Docker et le déploiement VPS Ubuntu/Debian. PM2 est utilisé pour le backend, Nginx pour le frontend et le reverse proxy HTTPS/WebSocket. Le script deploy/deploy.sh automatise la mise en ligne.</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>11. Variables d’environnement</w:t></w:r></w:p>
+<w:p><w:r><w:t>- PORT, DB_*, JWT_SECRET, FRONTEND_URL, VITE_API_URL</w:t></w:r></w:p>
+<w:p><w:r><w:t>- MTN_MOMO_* variables de paiement</w:t></w:r></w:p>
+<w:p><w:r><w:t>- SMTP_* pour les e-mails</w:t></w:r></w:p>
+<w:p><w:r><w:t>- CLOUDINARY_* pour les images</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>12. Recommandations de production</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Exécuter PostgreSQL dédié</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Ne jamais committer les secrets</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Forcer HTTPS et WebSocket sécurisé</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Sauvegarder la base et les uploads</w:t></w:r></w:p>
+<w:p><w:r><w:t>- Tester les paiements réels avant mise en production</w:t></w:r></w:p>
+<w:p><w:r><w:t> </w:t></w:r></w:p>
+<w:p><w:r><w:t>Conclusion</w:t></w:r></w:p>
+<w:p><w:r><w:t>IMMO229 est une plateforme immobilière complète qui combine publication, paiement, recherche et messagerie temps réel. Sa sécurisation des flux et la séparation des responsabilités rendent le projet cohérent pour un usage en production.</w:t></w:r></w:p>
+<w:sectPr><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720" w:gutter="0"/></w:sectPr></w:body></w:document>

@@ -1,0 +1,585 @@
+.register-screen {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(540px, 1.1fr);
+  min-height: 100vh;
+  overflow: hidden;
+  background: #fff;
+  color: #142033;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.register-story {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 34px clamp(28px, 4vw, 60px) 26px;
+  background: #091526;
+  color: #fff;
+}
+
+.register-story-image,
+.register-story-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.register-story-image {
+  object-fit: cover;
+  object-position: center;
+  opacity: .78;
+}
+
+.register-story-overlay {
+  background:
+    linear-gradient(180deg, rgba(5, 15, 29, .72) 0%, rgba(5, 15, 29, .42) 36%, rgba(5, 15, 29, .94) 100%),
+    linear-gradient(90deg, rgba(6, 17, 32, .36), transparent);
+}
+
+.register-story-top,
+.register-story-copy,
+.register-story-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.register-story-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.register-brand {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.register-brand__logo {
+  display: block;
+  width: 190px;
+  max-width: 46vw;
+  height: auto;
+}
+
+.register-country {
+  color: #e3e8ed;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1.4px;
+}
+
+.register-country span {
+  margin-left: 5px;
+  font-size: 15px;
+}
+
+.register-story-copy {
+  max-width: 510px;
+  margin: auto 0;
+  padding: 58px 0;
+}
+
+.register-story-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 20px;
+  color: #e3c77f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+
+.register-story-kicker span {
+  width: 22px;
+  height: 1px;
+  background: #d4af68;
+}
+
+.register-story-copy h2 {
+  margin: 0 0 18px;
+  color: #fff;
+  font-size: clamp(36px, 4vw, 58px);
+  font-weight: 750;
+  line-height: 1.07;
+  letter-spacing: -2px;
+}
+
+.register-story-copy h2 em {
+  color: #dec27a;
+  font-style: normal;
+}
+
+.register-story-copy > p {
+  max-width: 425px;
+  margin: 0;
+  color: #d0d7df;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.register-story-points {
+  display: grid;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.register-story-points span {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #e5e9ee;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.register-story-points svg {
+  color: #dec27a;
+}
+
+.register-story-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 17px;
+  border-top: 1px solid rgba(255, 255, 255, .19);
+  color: #c6ced7;
+  font-size: 10px;
+}
+
+.register-panel {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px clamp(32px, 7vw, 112px) 22px;
+  overflow-y: auto;
+}
+
+.register-mobile-brand {
+  display: none;
+}
+
+.register-content {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 24px 0;
+}
+
+.register-overline {
+  margin-bottom: 10px;
+  color: #0c8b6c;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 1.6px;
+}
+
+.register-content h1 {
+  margin: 0 0 9px;
+  color: #101d31;
+  font-size: clamp(30px, 3vw, 39px);
+  font-weight: 800;
+  letter-spacing: -1.45px;
+  line-height: 1.15;
+}
+
+.register-intro {
+  margin: 0 0 26px;
+  color: #778294;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.register-form {
+  display: grid;
+  gap: 15px;
+}
+
+.register-role-fieldset {
+  min-width: 0;
+  margin: 0 0 1px;
+  padding: 0;
+  border: 0;
+}
+
+.register-role-fieldset legend {
+  margin-bottom: 11px;
+  color: #283449;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.register-role-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.register-role-option {
+  display: flex;
+  min-width: 0;
+  min-height: 74px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 11px;
+  border: 1px solid #e0e5eb;
+  border-radius: 10px;
+  background: #fff;
+  color: #243144;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.register-role-option:hover {
+  border-color: #9cbdb4;
+  background: #fbfdfc;
+}
+
+.register-role-option.is-selected {
+  border-color: #13866b;
+  background: #f2faf7;
+  box-shadow: 0 0 0 2px rgba(19, 134, 107, .08);
+}
+
+.register-role-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 9px;
+  background: #f0f3f6;
+  color: #617084;
+}
+
+.is-selected .register-role-icon {
+  background: #e1f2eb;
+  color: #087a5d;
+}
+
+.register-role-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.register-role-copy strong {
+  color: #263549;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.register-role-copy small {
+  color: #798594;
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.register-role-check {
+  display: grid;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  place-items: center;
+  margin-left: auto;
+  border: 1px solid #d4dbe2;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.is-selected .register-role-check {
+  border-color: #13866b;
+  background: #13866b;
+}
+
+.register-role-hint {
+  margin: 8px 0 0;
+  color: #778294;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.register-field {
+  display: grid;
+  gap: 7px;
+}
+
+.register-field > label {
+  color: #344155;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.register-input-wrap {
+  display: flex;
+  min-height: 45px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid #e0e5eb;
+  border-radius: 8px;
+  background: #fbfcfd;
+  color: #8793a1;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.register-input-wrap:focus-within {
+  border-color: #14876a;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(20, 135, 106, .1);
+}
+
+.register-input-wrap > svg {
+  flex: 0 0 auto;
+}
+
+.register-input-wrap input {
+  width: 100%;
+  min-width: 0;
+  height: 43px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1e2d40;
+  font: inherit;
+  font-size: 12px;
+}
+
+.register-input-wrap input::placeholder {
+  color: #9aa4b0;
+}
+
+.register-password-toggle {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #748091;
+  cursor: pointer;
+}
+
+.register-password-toggle:hover {
+  background: #eef2f3;
+  color: #137e64;
+}
+
+.register-field-help {
+  color: #8893a1;
+  font-size: 10px;
+}
+
+.register-verification-copy {
+  margin: 0;
+  color: #687789;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.register-verification-copy strong {
+  color: #17243a;
+  overflow-wrap: anywhere;
+}
+
+.register-resend {
+  justify-self: center;
+  padding: 4px 8px;
+  border: 0;
+  background: transparent;
+  color: #0b8063;
+  font-size: 11px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.register-resend:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.register-submit {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 1px;
+  border: 1px solid rgba(197, 160, 89, .35);
+  border-radius: 8px;
+  background: #0b1528;
+  color: white;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.register-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #14223e;
+  box-shadow: 0 9px 20px rgba(11, 21, 40, .16);
+}
+
+.register-submit:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+.register-message {
+  margin: 0;
+  padding: 11px 13px;
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.register-message.is-success {
+  border-color: #c1e6d7;
+  background: #f0faf5;
+  color: #146747;
+}
+
+.register-message.is-error {
+  border-color: #f2c9c5;
+  background: #fff5f3;
+  color: #a33b31;
+}
+
+.register-login-prompt {
+  margin: 19px 0 0;
+  color: #7b8796;
+  font-size: 11px;
+  text-align: center;
+}
+
+.register-login-prompt a {
+  color: #0b8063;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.register-login-prompt a:hover {
+  text-decoration: underline;
+}
+
+.register-terms {
+  max-width: 400px;
+  margin: 14px auto 0;
+  color: #9aa3af;
+  font-size: 9px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.register-panel-footer {
+  padding-top: 15px;
+  color: #9aa3af;
+  font-size: 9px;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .register-screen {
+    grid-template-columns: minmax(0, 1fr) minmax(490px, 1fr);
+  }
+
+  .register-story {
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+
+  .register-panel {
+    padding-right: 34px;
+    padding-left: 34px;
+  }
+
+  .register-story-copy h2 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .register-screen {
+    display: block;
+    min-height: 100vh;
+    overflow: visible;
+    background: #fff;
+  }
+
+  .register-story {
+    display: none;
+  }
+
+  .register-panel {
+    min-height: 100vh;
+    padding: 19px 22px 16px;
+  }
+
+  .register-mobile-brand {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #edf0f2;
+  }
+
+  .register-brand__logo {
+    width: 170px;
+  }
+
+  .register-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #5d6877;
+    font-size: 11px;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .register-content {
+    max-width: 480px;
+    padding: 29px 0 24px;
+  }
+
+  .register-panel-footer {
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .register-panel {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+
+  .register-role-options {
+    grid-template-columns: 1fr;
+  }
+
+  .register-role-option {
+    min-height: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register-role-option,
+  .register-input-wrap,
+  .register-submit {
+    transition: none;
+  }
+}

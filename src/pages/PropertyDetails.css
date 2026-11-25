@@ -1,0 +1,252 @@
+.property-status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.status-disponible {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-loue {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-vendu {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.property-unavailable-notice {
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid #f3d08a;
+  border-radius: 0.9rem;
+  background: #fffbeb;
+  color: #713f12;
+}
+
+.property-unavailable-notice.status-vendu {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.property-unavailable-notice strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+.property-unavailable-notice p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.details-page .contact-owner-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid #047857;
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 12px 24px rgba(4, 120, 87, 0.2);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.details-page .contact-owner-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #047857, #065f46);
+  box-shadow: 0 16px 28px rgba(4, 120, 87, 0.27);
+}
+
+.details-page .contact-owner-btn:focus-visible,
+.contact-payment-confirm:focus-visible,
+.contact-payment-cancel:focus-visible {
+  outline: 3px solid rgba(16, 185, 129, 0.35);
+  outline-offset: 3px;
+}
+
+.details-page .contact-owner-btn:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.contact-owner-details {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0.75rem 0 1.25rem;
+  color: #52645a;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.contact-owner-details svg {
+  flex: 0 0 auto;
+  margin-top: 0.12rem;
+  color: #059669;
+}
+
+.contact-owner-details p {
+  margin: 0;
+}
+
+.contact-owner-details strong {
+  color: #065f46;
+}
+
+.contact-payment-dialog {
+  border: 1px solid #e4eee8;
+  animation: contact-dialog-enter 180ms ease-out;
+}
+
+.contact-payment-icon {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  border-radius: 0.9rem;
+  background: #e8f7ef;
+  color: #047857;
+}
+
+.contact-payment-description {
+  margin-top: 0.65rem;
+  color: #52645a;
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+
+.contact-payment-description strong {
+  color: #047857;
+}
+
+.contact-payment-cancel,
+.contact-payment-confirm {
+  display: inline-flex;
+  min-height: 2.85rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.contact-payment-cancel {
+  border: 1px solid #d7e0da;
+  background: #fff;
+  color: #405148;
+}
+
+.contact-payment-cancel:hover:not(:disabled) {
+  background: #f4f7f5;
+}
+
+.contact-payment-confirm {
+  border: 1px solid #047857;
+  background: #059669;
+  color: #fff;
+  box-shadow: 0 7px 14px rgba(4, 120, 87, 0.16);
+}
+
+.contact-payment-confirm:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #047857;
+}
+
+.contact-payment-confirm:disabled,
+.contact-payment-cancel:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.contact-payment-role-note {
+  align-self: center;
+  margin: 0;
+  color: #8a4b12;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.contact-payment-spinner {
+  animation: contact-spinner 900ms linear infinite;
+}
+
+@keyframes contact-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes contact-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 520px) {
+  .details-page .contact-owner-btn {
+    justify-content: flex-start;
+    padding: 0.9rem 1rem;
+    font-size: 0.92rem;
+  }
+
+  .details-page .contact-owner-btn svg:last-child {
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details-page .contact-owner-btn,
+  .contact-payment-confirm,
+  .contact-payment-cancel,
+  .contact-payment-dialog {
+    animation: none;
+    transition: none;
+  }
+
+  .contact-payment-spinner {
+    animation-duration: 1800ms;
+  }
+}
+.verification-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 7px 0;
+}
+
+.verification-badges span {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #eaf4ed;
+  color: #276347;
+  font-size: 11px;
+  font-weight: 700;
+}

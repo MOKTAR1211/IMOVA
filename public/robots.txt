@@ -1,0 +1,22 @@
+# robots.txt pour Immo229 — Plateforme Immobilière au Bénin
+User-agent: *
+Allow: /
+Allow: /biens
+Allow: /bien/*
+Allow: /carte
+Allow: /proximite
+Allow: /a-propos
+Allow: /contact
+
+# Bloquer l'indexation des espaces privés et sécurisés
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /messages
+Disallow: /profile
+Disallow: /mes-visites
+Disallow: /favoris
+Disallow: /changer-mot-de-passe
+Disallow: /api/
+
+# Sitemap officiel
+Sitemap: https://immo229.bj/sitemap.xml

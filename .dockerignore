@@ -1,0 +1,15 @@
+.env
+node_modules
+npm-debug.log
+.git
+.gitignore
+dist
+.vite
+backend/node_modules
+backend/.env
+backend/.env.*
+!backend/.env.example
+backend/uploads
+backend/private-uploads
+.DS_Store
+*.local
