@@ -42,20 +42,28 @@ app.use((req, res, next) => {
 });
 
 // 3. SÉCURITÉ : Configuration CORS contrôlée
+// Supporte plusieurs URLs séparées par des virgules dans FRONTEND_URL
+// Supporte aussi les sous-domaines Vercel (*.vercel.app) pour les prévisualisations
+const extraOrigins = (process.env.FRONTEND_URL || "")
+  .split(",")
+  .map((u) => u.trim())
+  .filter(Boolean);
+
 const allowedOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
   "http://localhost:5174",
   "http://127.0.0.1:5174",
   "http://localhost:3000",
-  process.env.FRONTEND_URL,
+  ...extraOrigins,
 ].filter(Boolean);
 
 const allowOrigin = (origin, callback) => {
-  if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes("*")) {
-    return callback(null, true);
-  }
-  return callback(new Error("Origine bloquée par la politique CORS"));
+  if (!origin) return callback(null, true); // requêtes server-to-server sans origin
+  if (allowedOrigins.includes(origin)) return callback(null, true);
+  // Accepter les previews Vercel dynamiquement (ex: imova-abc123.vercel.app)
+  if (/\.vercel\.app$/.test(origin)) return callback(null, true);
+  return callback(new Error(`Origine bloquée par la politique CORS : ${origin}`));
 };
 
 app.use(
