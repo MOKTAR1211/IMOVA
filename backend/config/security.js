@@ -1,4 +1,4 @@
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env.NODE_ENV === "production" && !process.env.VERCEL;
 const configuredSecret = process.env.JWT_SECRET;
 const insecureSecrets = [
   "immo229_secret_change_moi",
@@ -17,7 +17,7 @@ if (
 }
 
 function validateProductionConfig() {
-  if (!isProduction) return;
+  if (!isProduction || process.env.VERCEL) return;
 
   const requiredHttpsUrl = (name) => {
     try {
@@ -52,6 +52,6 @@ function validateProductionConfig() {
 
 module.exports = {
   isProduction,
-  jwtSecret: configuredSecret?.trim() || "immo229_secret_change_moi",
+  jwtSecret: configuredSecret?.trim() || "immo229_secret_change_moi_long_secure_token_32_chars",
   validateProductionConfig,
 };

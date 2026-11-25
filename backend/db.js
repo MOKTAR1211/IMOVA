@@ -325,14 +325,26 @@ function getMemPool() {
   return memPool;
 }
 
-const realPool = new PgPool({
-  user: process.env.DB_USER || "postgres",
-  host: process.env.DB_HOST || "localhost",
-  database: process.env.DB_NAME || "immo229",
-  password: process.env.DB_PASSWORD || "postgres",
-  port: parseInt(process.env.DB_PORT || "5432", 10),
-  connectionTimeoutMillis: 1500,
-});
+const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+
+const realPool = new PgPool(
+  connectionString
+    ? {
+        connectionString,
+        ssl: connectionString.includes("localhost") || connectionString.includes("127.0.0.1")
+          ? false
+          : { rejectUnauthorized: false },
+        connectionTimeoutMillis: 5000,
+      }
+    : {
+        user: process.env.DB_USER || "postgres",
+        host: process.env.DB_HOST || "localhost",
+        database: process.env.DB_NAME || "immo229",
+        password: process.env.DB_PASSWORD || "postgres",
+        port: parseInt(process.env.DB_PORT || "5432", 10),
+        connectionTimeoutMillis: 1500,
+      }
+);
 
 const paymentSchemaReady = useTestMemoryDatabase
   ? Promise.resolve()
